@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ivy-module version="2.0">
-  <info organisation="spiralcraft" module="stripe-payments">
+  <info organisation="spiralcraft" module="stripepay">
   </info> 
 
   <configurations>
@@ -10,7 +10,7 @@
   </configurations>
   
   <publications>
-    <artifact name="spiralcraft-stripe-payments" type="package" ext="zip"/>
+    <artifact name="spiralcraft-stripepay" type="package" ext="zip"/>
   </publications> 
   
   <dependencies>
