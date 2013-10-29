@@ -1,0 +1,15 @@
+<hsql:BasicEmbeddedStore
+  xmlns:hsql="class:/spiralcraft/sql/vendor/hsqldb/"
+  xmlns:sp="class:/spiralcraft/stripepay/"
+  >
+  <name>spiralcraft-stripepay
+  </name>
+  
+  <schema dataURI="sp:StripePay.schema.xml"/>
+  
+  <debugLevel>INFO
+  </debugLevel>
+  
+        
+  
+</hsql:BasicEmbeddedStore>

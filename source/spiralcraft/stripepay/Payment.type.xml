@@ -1,0 +1,55 @@
+<meta:Type
+  xmlns:meta="class:/spiralcraft/data/types/meta/"
+  xmlns:bizm="class:/spiralcraft/biz/meta/"
+  >
+  <description>
+    A Stripe payment transaction
+  </description>
+
+  <fields>
+
+    <meta:SequenceField>
+      <name>id
+      </name>
+      
+      <type><LSID.type/>
+      </type>
+    </meta:SequenceField>
+    
+    <meta:Field>
+      <name>amount
+      </name>
+      <type><bizm:Money.type/>
+      </type>
+    </meta:Field>
+    
+    <meta:Field>
+      <name>token
+      </name>
+      <type><String.type/>
+      </type>
+    </meta:Field>
+
+    <meta:Field>
+      <name>authTime
+      </name>
+      <type><Date.type/>
+      </type>
+    </meta:Field>
+
+    <meta:Field>
+      <name>processedTime
+      </name>
+      <type><Date.type/>
+      </type>
+    </meta:Field>
+
+    <meta:Field>
+      <name>processed
+      </name>
+      
+      <type><Boolean.type/>
+      </type>
+    </meta:Field>
+  </fields>
+</meta:Type>

@@ -1,0 +1,12 @@
+<meta:Schema
+  xmlns:meta="class:/spiralcraft/data/types/meta/"
+  xmlns:sp="class:/spiralcraft/stripepay/"
+  >
+  <entities>
+    <meta:Entity>
+      <type><sp:Payment.type/>
+      </type>
+    </meta:Entity>
+  </entities>
+
+</meta:Schema>

@@ -21,4 +21,5 @@
     
   <import file="../../build/build-spiralcraft-common.xml"/>
        
+  <target name="pack" depends="build,build-app.pack"/>
 </project>

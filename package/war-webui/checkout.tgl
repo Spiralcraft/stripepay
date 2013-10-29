@@ -1,0 +1,42 @@
+<%@doclet
+  tgns:sp="bundle://spiralcraft-stripepay.war-webui/"
+  tgns:jm="class:/java/math/"
+  tgns:html="class:/spiralcraft/servlet/webui/components/html/"
+  tgns:j="class:/java/lang/"
+  tgns:rpc="class:/spiralcraft/servlet/webui/components/rpc/"
+  tgns:webui="class:/spiralcraft/servlet/webui/"
+  contextX='
+    {
+      key:="pk_test_czwzkTp2tactuLOEOqbMTRzG"
+      ,amountX:=`0.00`
+      ,nameX:=`""`
+      ,descriptionX:=`""`
+      ,image:="/128x128.png"
+    }
+    '
+  %>
+  
+  <%With x="[#stripe] { stripeToken:[@j:String] }" %>
+    <%html:Form 
+      actionedWhen='[webui:ServiceContext].post.getValue("stripeToken")!=null'
+      onPost='@log("Got token "+stripeToken)'
+      %>
+      <%rpc:FormInput 
+        name="stripeToken" 
+        contextualizeName="false"
+        x="stripeToken"
+      /%>
+      <%=[stripe].stripeToken{ .!=null?"Token: "+.:"NO TOKEN"}/%>
+    
+      <script src="https://checkout.stripe.com/v2/checkout.js" 
+        class="stripe-button"
+        data-key="<%=[sp:checkout].key/%>"
+        data-amount="<%=[sp:checkout].amountX.()*100/%>"
+        data-name="<%=[sp:checkout].nameX.()/%>"
+        data-description="<%=[sp:checkout].descriptionX.()/%>"
+        data-image="<%=[sp:checkout].image/%>"
+        >
+      </script>
+    <%/html:Form%>
+  <%/With%>
+<%/@doclet%>
