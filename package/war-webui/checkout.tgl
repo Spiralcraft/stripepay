@@ -16,10 +16,17 @@
     '
   %>
   
-  <%With x="[#stripe] { stripeToken:[@j:String] }" %>
+  <%With 
+    x='[#stripe] { 
+        stripeToken:[@j:String]
+        ,amount:=[sp:checkout].amountX.() 
+        }'
+    %>
     <%html:Form 
       actionedWhen='[webui:ServiceContext].post.getValue("stripeToken")!=null'
-      onPost='@log("Got token "+stripeToken)'
+      onPost='[*sp:CompleteCheckout]
+               .(stripeToken,amount)
+             '
       %>
       <%rpc:FormInput 
         name="stripeToken" 
@@ -31,7 +38,7 @@
       <script src="https://checkout.stripe.com/v2/checkout.js" 
         class="stripe-button"
         data-key="<%=[sp:checkout].key/%>"
-        data-amount="<%=[sp:checkout].amountX.()*100/%>"
+        data-amount="<%=amount*100/%>"
         data-name="<%=[sp:checkout].nameX.()/%>"
         data-description="<%=[sp:checkout].descriptionX.()/%>"
         data-image="<%=[sp:checkout].image/%>"
