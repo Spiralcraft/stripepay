@@ -9,6 +9,8 @@
     <pathelement location="lib/spiralcraft-core.jar"/>
     <pathelement location="lib/spiralcraft-json.jar"/>
     <pathelement location="lib/spiralcraft-servlet.jar"/>
+    <pathelement location="lib/stripe-java.jar"/>
+    <pathelement location="lib/gson.jar"/>
   </path>
 
   <property name="classpath" refid="classpath"/>

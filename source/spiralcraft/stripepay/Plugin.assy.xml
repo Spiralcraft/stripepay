@@ -1,5 +1,6 @@
 <app:PluginContext
   xmlns:app="class:/spiralcraft/app/"
+  xmlns:config="context://config/spiralcraft-stripepay"
   >
   <pluginId>spiralcraft-stripepay
   </pluginId>

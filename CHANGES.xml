@@ -19,11 +19,11 @@
         </revision>
         
         <notes>
-          <scm:Note>
+          <scm:Note>Initial release captures and records a charge
           </scm:Note>
         </notes>
 
-        <path>
+        <path>/source
         </path>
         
         <resources>

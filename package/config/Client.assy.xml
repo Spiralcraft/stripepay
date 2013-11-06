@@ -1,0 +1,6 @@
+<sp:Client
+  xmlns:sp="class:/spiralcraft/stripepay"
+  >
+  <apiKey>"sk_test_mkGsLqEW6SLnZa487HYfJVLf"
+  </apiKey>
+</sp:Client>

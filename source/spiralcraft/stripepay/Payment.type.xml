@@ -1,6 +1,7 @@
 <meta:Type
   xmlns:meta="class:/spiralcraft/data/types/meta/"
   xmlns:bizm="class:/spiralcraft/biz/meta/"
+  xmlns:ju="class:/java/util/"
   >
   <description>
     A Stripe payment transaction
@@ -24,18 +25,36 @@
     </meta:Field>
     
     <meta:Field>
-      <name>token
+      <name>cardToken
       </name>
       <type><String.type/>
       </type>
     </meta:Field>
 
     <meta:Field>
-      <name>authTime
+      <name>refId
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>
+
+    <meta:Field>
+      <name>createTime
       </name>
       <type><Date.type/>
       </type>
+      <defaultExpression>[@ju:Date].()
+      </defaultExpression>
     </meta:Field>
+
+    <meta:Field>
+      <name>chargeId
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>  
 
     <meta:Field>
       <name>processedTime
@@ -51,5 +70,73 @@
       <type><Boolean.type/>
       </type>
     </meta:Field>
+    
+    <meta:Field>
+      <name>paid
+      </name>
+      
+      <type><Boolean.type/>
+      </type>
+    </meta:Field>  
+      
+    <meta:Field>
+      <name>captured
+      </name>
+      
+      <type><Boolean.type/>
+      </type>
+    </meta:Field>  
+
+    <meta:Field>
+      <name>balanceTransaction
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>  
+    
+    <meta:Field>
+      <name>failed
+      </name>
+      
+      <type><Boolean.type/>
+      </type>
+    </meta:Field>
+    
+    <meta:Field>
+      <name>failureException
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>    
+
+    <meta:Field>
+      <name>failureMessage
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>    
+
+    <meta:Field>
+      <name>failureCode
+      </name>
+      
+      <type><String.type/>
+      </type>
+    </meta:Field>    
+
+
+
   </fields>
+  
+  <keys>
+    <meta:Key>
+      <primary>true
+      </primary>
+      <fieldList>id
+      </fieldList>
+    </meta:Key>
+  </keys>
 </meta:Type>

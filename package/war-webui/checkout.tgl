@@ -1,5 +1,6 @@
 <%@doclet
-  tgns:sp="bundle://spiralcraft-stripepay.war-webui/"
+  tgns:spw="bundle://spiralcraft-stripepay.war-webui/"
+  tgns:sp="class:/spiralcraft/stripepay/"
   tgns:jm="class:/java/math/"
   tgns:html="class:/spiralcraft/servlet/webui/components/html/"
   tgns:j="class:/java/lang/"
@@ -19,14 +20,15 @@
   <%With 
     x='[#stripe] { 
         stripeToken:[@j:String]
-        ,amount:=[sp:checkout].amountX.() 
+        ,amount:=[spw:checkout].amountX.() 
         }'
     %>
     <%html:Form 
       actionedWhen='[webui:ServiceContext].post.getValue("stripeToken")!=null'
-      onPost='[*sp:CompleteCheckout]
-               .(stripeToken,amount)
+      onPost='[*sp:ChargeAndCapture]
+               .(stripeToken,amount,"someRefId012345")
              '
+      reloadAfterAction="true"
       %>
       <%rpc:FormInput 
         name="stripeToken" 
@@ -37,11 +39,11 @@
     
       <script src="https://checkout.stripe.com/v2/checkout.js" 
         class="stripe-button"
-        data-key="<%=[sp:checkout].key/%>"
+        data-key="<%=[spw:checkout].key/%>"
         data-amount="<%=amount*100/%>"
-        data-name="<%=[sp:checkout].nameX.()/%>"
-        data-description="<%=[sp:checkout].descriptionX.()/%>"
-        data-image="<%=[sp:checkout].image/%>"
+        data-name="<%=[spw:checkout].nameX.()/%>"
+        data-description="<%=[spw:checkout].descriptionX.()/%>"
+        data-image="<%=[spw:checkout].image/%>"
         >
       </script>
     <%/html:Form%>

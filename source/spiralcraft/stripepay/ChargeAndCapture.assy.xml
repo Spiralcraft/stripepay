@@ -1,0 +1,147 @@
+<task:Sequence
+  xmlns:dtask="class:/spiralcraft/data/task/"
+  xmlns:task="class:/spiralcraft/task/"
+  xmlns:bizm="class:/spiralcraft/biz/meta/"
+  xmlns:j="class:/java/lang"
+  xmlns:sp="class:/spiralcraft/stripepay/"
+  xmlns:ju="class:/java/util/"
+  xmlns:st="class:/com/stripe/model/"
+  >
+
+  <contextX>
+    [#tx]
+    { cardToken:[@j:String]
+      , amount:[@bizm:Money]
+      , refId:[@j:String]
+      , payment:[@sp:Payment]
+    }
+  </contextX>
+  
+  <resultX>[tx].payment
+  </resultX>
+  
+  <sequence>
+    <task:Log>
+      <x>"Charging "+amount+" to "+cardToken+" refId="+refId
+      </x>
+    </task:Log>
+    
+    <dtask:Session>
+      <transactional>true
+      </transactional>
+      <isolate>true
+      </isolate>
+      <sequence>
+        <dtask:Edit>
+          <typeX>[@sp:Payment].type
+          </typeX>
+          <autoSave>true
+          </autoSave>
+          <preSave>
+            []{ .cardToken=[tx].cardToken
+            , .amount=[tx].amount
+            , .refId=[tx].refId
+            }
+          </preSave>
+          <onSave>
+            [tx].payment=.
+          
+          </onSave>
+        </dtask:Edit>
+      </sequence>
+    </dtask:Session>
+    
+    <task:Eval>
+      <x>[@sp:ChargeTask]
+           .(card:=[tx].payment.cardToken
+            ,amount:=[tx].payment.amount
+            ,paymentId:=[tx].payment.id
+            ,refId:=[tx].payment.refId
+            )
+         { .work()
+         , .
+         }
+      </x>
+      
+      <sequence>
+        <!-- pass -->
+        <task:If>
+          <x>.exception==null
+          </x>
+                
+          <sequence>
+            <dtask:Session>
+              <contextX>.charge
+              </contextX>
+              <transactional>true
+              </transactional>
+              <isolate>true
+              </isolate>
+              <sequence>
+                <dtask:Edit>
+                  <x>[tx].payment
+                  </x>
+                  <autoSave>true
+                  </autoSave>
+                  <preSave>
+                    []{ 
+                      .processedTime=[@ju:Date].()
+                      ,processed=true
+                      ,chargeId=[st:Charge].id
+                      ,paid=[st:Charge].paid
+                      ,captured=[st:Charge].captured
+                      ,balanceTransaction=[st:Charge].balanceTransaction
+                      ,failed=[st:Charge].failureCode!=null
+                      ,failureCode=[st:Charge].failureCode
+                      ,failureMessage=[st:Charge].failureMessage
+                    }
+                  </preSave>
+                </dtask:Edit>
+              </sequence>
+            </dtask:Session>
+          
+            
+          </sequence>
+        </task:If>
+        
+        <!--  fail  -->
+        <task:If>
+          <x>.exception!=null
+          </x>
+          
+          <sequence>
+            <task:Log>
+              <x>.exception
+              </x>
+            </task:Log>
+            <dtask:Session>
+              <transactional>true
+              </transactional>
+              <isolate>true
+              </isolate>
+              <sequence>
+                <dtask:Edit>
+                  <x>[tx].payment
+                  </x>
+                  <autoSave>true
+                  </autoSave>
+                  <preSave>
+                    []{ 
+                      .processedTime=[@ju:Date].()
+                      ,failed=true
+                      ,failureException=[sp:ChargeTask].exception.message
+                    }
+                  </preSave>
+                </dtask:Edit>
+              </sequence>
+            </dtask:Session>
+            
+            
+          </sequence>
+        </task:If>
+      </sequence>
+    
+    </task:Eval>
+    
+  </sequence>
+</task:Sequence>
