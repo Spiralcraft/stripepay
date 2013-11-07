@@ -1,5 +1,6 @@
 <project name="spiralcraft-stripepay" default="pack" basedir=".">
 
+  <!-- push github test -->
   <property name="module" value="stripepay"/>
   <property name="buildVersion" value="0.4.17-dev1"/>
 
