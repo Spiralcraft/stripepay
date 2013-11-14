@@ -74,6 +74,23 @@ public class ChargeTask
   @Override
   public void work()
   {
+    try
+    {
+      if (amount==null)
+      { throw new IllegalArgumentException("Amount cannot be null");
+      }
+      if (card==null)
+      { throw new IllegalArgumentException("Card cannot be null");
+      }
+      
+    }
+    catch (Exception x)
+    { 
+      addException(x);
+      log.log(Level.SEVERE,"Caught exception processing card",x);
+      return;
+    }
+    
     HashMap<String, Object> chargeParams 
       = new HashMap<String, Object>(); 
     chargeParams.put("amount", amount.multiply(BigDecimal.valueOf(100)).intValue());

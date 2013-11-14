@@ -26,10 +26,25 @@ import com.stripe.Stripe;
 public class Client
 {
   
+  private String publicKey="pk_test_czwzkTp2tactuLOEOqbMTRzG";
+  
   { Stripe.apiKey="sk_test_mkGsLqEW6SLnZa487HYfJVLf";
   }
-  
-  public void setApiKey(String apiKey)
-  { Stripe.apiKey=apiKey;
+
+  public void setSecretKey(String secretKey)
+  { Stripe.apiKey=secretKey;
   }
+  
+  public String getSecretKey()
+  { return Stripe.apiKey;
+  }
+  
+  public void setPublicKey(String publicKey)
+  { this.publicKey=publicKey;
+  }
+  
+  public String getPublicKey()
+  { return publicKey;
+  }
+      
 }
