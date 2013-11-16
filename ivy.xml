@@ -3,8 +3,8 @@
   <info organisation="spiralcraft" module="stripepay">
   </info> 
 
-  <configurations>
-    <conf name="default"/>
+  <configurations defaultconf="runtime" defaultconfmapping="runtime->*">
+    <conf name="runtime"/>
     <conf name="dev"/>
   
   </configurations>
@@ -14,7 +14,7 @@
   </publications> 
   
   <dependencies>
-    <dependency org="spiralcraft" name="core" rev="[0.4.15.1-dev1,0.5]"/>
+    <dependency org="spiralcraft" name="core" rev="[0.4.15.1-dev1,0.5]" conf="runtime"/>
     <dependency org="spiralcraft" name="servlet" rev="[0.4.16-dev1,0.5]"/>
     <dependency org="spiralcraft" name="net" rev="[0.4.15,0.5]"/>
     <dependency org="spiralcraft" name="json" rev="[0.4.14,0.5]"/>

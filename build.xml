@@ -2,6 +2,7 @@
 
   <property name="module" value="stripepay"/>
   <property name="buildVersion" value="0.4.17-dev1"/>
+  <property name="build.status" value="milestone"/>
 
   <property name="publish.resolver.type" value="distrib"/>  
   
