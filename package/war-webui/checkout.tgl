@@ -14,6 +14,9 @@
       ,refIdX:=`[@j:String].@nil`
       ,descriptionX:=`""`
       ,image:="/128x128.png"
+      ,emailX:=`""`
+      ,labelX:=`""`
+      ,panelLabelX:=`""`
       ,onCapture:=[#{ [@sp:Payment].@nil }]{ .@log("Default onCapture "+.) }
     }
     '
@@ -46,6 +49,9 @@
         data-name="<%=[spw:checkout].nameX.()/%>"
         data-description="<%=[spw:checkout].descriptionX.()/%>"
         data-image="<%=[spw:checkout].image/%>"
+        data-label="<%=[spw:checkout].labelX.()/%>"
+        data-panel-label="<%=[spw:checkout].panelLabelX.()/%>"
+        data-email="<%=[spw:checkout].emailX.()/%>"
         >
       </script>
     <%/html:Form%>
