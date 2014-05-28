@@ -26,9 +26,9 @@ import com.stripe.Stripe;
 public class Client
 {
   
-  private String publicKey="pk_test_czwzkTp2tactuLOEOqbMTRzG";
+  private String publicKey="pk_test_9e1WmEpACLsRINTG81ZF5BuE";
   
-  { Stripe.apiKey="sk_test_mkGsLqEW6SLnZa487HYfJVLf";
+  { Stripe.apiKey="sk_test_QdRyG6Csd1GwKr9h26h70uhd";
   }
 
   public void setSecretKey(String secretKey)
