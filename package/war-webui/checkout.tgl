@@ -30,6 +30,7 @@
     %>
     <%html:Form 
       actionedWhen='[webui:ServiceContext].post.getValue("stripeToken")!=null'
+      clientPostActionName="spiralcraft-stripepay.charge"
       onPost='[*sp:ChargeAndCapture]
                .(stripeToken,amount,[spw:checkout].refIdX.())
                { [spw:checkout].onCapture.(.)
