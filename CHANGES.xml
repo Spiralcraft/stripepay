@@ -13,7 +13,38 @@
     </date>
     
     <detail>
-    
+
+      <scm:Change>
+        <revision>-dev3
+        </revision>
+        
+        <notes>
+          <scm:Note>Make sure the Form used to receive the transaction
+            callback works regardless of the conversational state of the
+            page.
+          </scm:Note>
+        </notes>
+
+        <path>/package/war-webui/checkout.tgl
+        </path>
+        
+      </scm:Change>
+
+      <scm:Change>
+        <revision>-dev3
+        </revision>
+        
+        <notes>
+          <scm:Note>Change default keys to those for the Spiralcraft example
+            account instead of Stripe public example keys.
+          </scm:Note>
+        </notes>
+
+        <path>/source/spiralcraft/stripepay/Client.java
+        </path>
+        
+      </scm:Change>
+
       <scm:Change>
         <revision>-dev1
         </revision>

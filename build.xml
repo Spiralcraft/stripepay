@@ -1,7 +1,8 @@
 <project name="spiralcraft-stripepay" default="pack" basedir=".">
 
+  <property name="organization" value="spiralcraft"/>
   <property name="module" value="stripepay"/>
-  <property name="buildVersion" value="0.4.17-dev2"/>
+  <property name="buildVersion" value="0.4.17-dev3"/>
   <property name="build.status" value="milestone"/>
 
   <property name="publish.resolver.type" value="distrib"/>  
@@ -22,7 +23,8 @@
   <property name="package.spiralcraft-webapp.dest" value="packages"/>
   <property name="package.spiralcraft-jsclient.dest" value="packages"/>
     
-  <import file="../../build/build-spiralcraft-common.xml"/>
+  <property name="depends.dir" location="../../repo"/>
+  <import file="../../build/build-common.xml"/>
        
   <target name="pack" depends="build,build-app.pack"/>
 </project>
