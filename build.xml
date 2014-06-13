@@ -2,7 +2,7 @@
 
   <property name="organization" value="spiralcraft"/>
   <property name="module" value="stripepay"/>
-  <property name="buildVersion" value="0.4.17-dev3"/>
+  <property name="buildVersion" value="0.4.17-dev4"/>
   <property name="build.status" value="milestone"/>
 
   <property name="publish.resolver.type" value="distrib"/>  

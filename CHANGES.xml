@@ -15,6 +15,21 @@
     <detail>
 
       <scm:Change>
+        <revision>-dev4
+        </revision>
+        
+        <notes>
+          <scm:Note>Fix issue where the Stripe API now throws an error
+            when there is a decimal point after the amount.
+          </scm:Note>
+        </notes>
+
+        <path>/package/war-webui/checkout.tgl
+        </path>
+        
+      </scm:Change>
+
+      <scm:Change>
         <revision>-dev3
         </revision>
         
